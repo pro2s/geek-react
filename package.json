@@ -1,7 +1,6 @@
 {
-  "name": "create-react-app-redux",
+  "name": "geek-react",
   "version": "0.1.0",
-  "private": true,
   "devDependencies": {
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
@@ -30,11 +29,8 @@
     "eject": "react-scripts eject",
     "precommit": "lint-staged"
   },
-  "homepage": "https://cra-redux-router-thunk.herokuapp.com",
+  "homepage": "https://pro2s.ru/geek-react/",
   "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   }
 }
