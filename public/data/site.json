@@ -1,0 +1,27 @@
+{
+    "name" : "Geek React",
+    "pages" : [
+        {
+            "id" : "",
+            "title" : "Counter",
+            "main": "counter"
+        },
+        {
+            "id" : "about-us",
+            "title" : "Пра нас",
+            "main": "about"
+        },
+        {
+            "id" : "products",
+            "title" : "Тавары"
+        },
+        {
+            "id" : "services",
+            "title" : "Паслугі" 
+        },
+        {
+            "id" : "workshops",
+            "title" : "Майстар-класы"
+        }
+    ]
+}
