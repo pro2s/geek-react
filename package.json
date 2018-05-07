@@ -29,7 +29,6 @@
     "eject": "react-scripts eject",
     "precommit": "lint-staged"
   },
-  "homepage": "https://pro2s.ru/geek-react/",
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
   }
