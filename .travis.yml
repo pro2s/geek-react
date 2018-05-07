@@ -3,7 +3,14 @@ node_js:
   - "stable"
 cache:
   directories:
-  - node_modules #Cache node_modules for faster builds
+  - node_modules 
 script:
-  - npm test #Runs Tests
-  - npm run build #Creats a production build
+  - npm test
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token
+  local_dir: build
+  on:
+    branch: master
