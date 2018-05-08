@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPageItems } from '../../actions/itemsAction';
 import { Row, Col } from 'react-bootstrap/lib';
+import { Link } from 'react-router-dom';
 
 class ItemsList extends Component {
   static propTypes = {
@@ -25,7 +26,7 @@ class ItemsList extends Component {
           <Col md={4} key={index}>
             <div>
               <h3 className="pull-right">{item.price || ''}</h3>
-              <h3>{item.title}</h3>
+              <h3><Link to={"/" + pageId + "/" + item.id}>{item.title}</Link></h3>
             </div>
             <div>
               <img

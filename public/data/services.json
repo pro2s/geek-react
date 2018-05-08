@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Размалюй ровар",
       "price": "5 руб.",
       "preview":
@@ -18,7 +18,20 @@
       "description": "painted_bike.html"
     },
     {
-      "title": "Свая выява на цішотцы"
+      "id": "2",
+      "title": "Свая выява на цішотцы",
+      "preview": "https://test.geeklauka.by/images/services/s1/space_invader_cover.jpg",
+      "price" : "-",
+      "images": [
+        "https://test.geeklauka.by/images/services/s1/space_invader_1.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_2.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_3.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_4.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_5.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_6.jpg",
+        "https://test.geeklauka.by/images/services/s1/space_invader_7.jpg"
+      ],
+      "description": "space_invader.html"
     }
   ]
 }
