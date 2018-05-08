@@ -28,7 +28,11 @@ class ItemsList extends Component {
               <h3>{item.title}</h3>
             </div>
             <div>
-              <img className="img-responsive" src={item.preview} />
+              <img
+                className="img-responsive"
+                src={item.preview}
+                alt={item.title}
+              />
             </div>
           </Col>
         ))}
