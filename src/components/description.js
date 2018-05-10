@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import fetch from 'cross-fetch';
-    
+import ReactHtmlParser from 'react-html-parser';
+
 class Description extends Component {
   state = {
     html: ''
   }
-
+  
   componentDidMount() {
     const { id } = this.props;
     fetch('/data/html/' + id)
@@ -19,7 +20,7 @@ class Description extends Component {
       .then(html => {
         this.setState({html: html});
       })
-      .catch(_ => {
+      .catch(() => {
         this.setState({html: '404'})
       });
   }
@@ -30,7 +31,15 @@ class Description extends Component {
 
   render() {
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.state.html}} />
+      <div>
+        {ReactHtmlParser(this.state.html, {transform: (node) => {
+          let isHyperlink = node.type === 'tag' && node.name === 'a'
+          if (isHyperlink) {
+            let text = node.children.map(v => v.data).map(v => v).join()
+            return <span>{text}</span>
+          } 
+        }})}
+      </div>
     );
   }
 }
