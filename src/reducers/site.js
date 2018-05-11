@@ -1,6 +1,19 @@
 import * as types from '../constants/appActionTypes';
 
-const siteInitialState = { name: '', pages: [], pagesItems: {} };
+export const selectedPage = (state = '', action) => {
+  switch (action.type) {
+    case types.SELECT_PAGE:
+      return action.pageId
+    default:
+      return state
+  }
+}
+
+const siteInitialState = {
+   name: '',
+   pages: [],
+   pagesInfo: {} 
+}
 export default (state = siteInitialState, action) => {
   switch (action.type) {
     case types.GET_SITE_DATA_RECEIVED:
@@ -11,7 +24,7 @@ export default (state = siteInitialState, action) => {
         pages
       };
     case types.GET_PAGE_DATA_RECEIVED:
-      state.pagesItems[action.initAction.pageId] = action.data.items;
+      state.pagesInfo[action.initAction.pageId] = action.data;
       return {
         ...state
       };

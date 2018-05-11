@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -9,7 +9,7 @@ import {
   incrementAsync,
   decrement,
   decrementAsync
-} from '../../modules/counter';
+} from '../../reducers/counter';
 
 const Counter = props => (
   <div>
@@ -51,7 +51,7 @@ Counter.propTypes = {
   changePage: PropTypes.func,
   increment: PropTypes.func,
   decrement: PropTypes.func
-}
+};
 
 const mapStateToProps = state => ({
   count: state.counter.count,

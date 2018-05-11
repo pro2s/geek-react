@@ -1,4 +1,6 @@
 {
+  "title" : "Якія паслугі",
+  "description" : "што мы можам",
   "items": [
     {
       "id": "1",
@@ -23,15 +25,10 @@
       "preview": "https://test.geeklauka.by/images/services/s1/space_invader_cover.jpg",
       "price" : "-",
       "images": [
-        "https://test.geeklauka.by/images/services/s1/space_invader_1.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_2.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_3.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_4.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_5.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_6.jpg",
-        "https://test.geeklauka.by/images/services/s1/space_invader_7.jpg"
+        "https://test.geeklauka.by/images/services/s1/paint_t_shirts_1_mini.jpg",
+        "https://test.geeklauka.by/images/services/s1/paint_t_shirts_2_mini.jpg"
       ],
-      "description": "space_invader.html"
+      "description": "paint_t_shirts.html"
     }
   ]
 }

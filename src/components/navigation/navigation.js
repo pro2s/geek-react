@@ -1,32 +1,22 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Navbar, Nav, NavItem } from 'react-bootstrap/lib';
-import { LinkContainer } from 'react-router-bootstrap';
+import React, { Component } from 'react';
+import { Navbar, Nav } from 'react-bootstrap/lib';
+import ItemsLinks from './itemsLinks';
+import DefaultLinks from './default';
 
 export default class Navigation extends Component {
-  static propTypes = {
-    pages: PropTypes.array.isRequired
-  }
-
   render() {
-    const { pages = [] } = this.props
     return (
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home">React-Bootstrap</a>
+            <a href="#/">Гік-лаўка</a>
           </Navbar.Brand>
         </Navbar.Header>
-        <Nav>
-          {pages.map(page =>
-            <LinkContainer to={"/" + page.id} key={page.id} exact>
-              <NavItem href="/">
-                {page.title}
-              </NavItem>
-            </LinkContainer>
-          )}
+        <Nav pullRight>
+          <DefaultLinks />
+          <ItemsLinks />
         </Nav>
       </Navbar>
-    )
+    );
   }
 }

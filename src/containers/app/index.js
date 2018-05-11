@@ -2,65 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import PropsRoute from '../../components/propsRoute';
 import { Navigation, Footer } from '../../components/navigation';
-import Page from '../../components/page';
 import Counter from '../counter';
 import About from '../about';
-import Items from '../items';
+import Pages from '../pages';
+import { Grid } from 'react-bootstrap/lib';
 
-const App = ({ pages, itemsPages }) => (
+const App = ({ pages }) => (
   <div>
     <header>
-      <Navigation pages={pages} />
+      <Navigation />
     </header>
     <main>
-      <Switch>
-        {pages.map((page, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
-          <PropsRoute
-            key={index}
-            path={'/' + page.id}
+      <Grid>
+        <Switch>
+          <Route path={'/about-us'} exact component={About} />
+          <Route path={'/counter'} exact component={Counter} />
+          <Route
+            path={'/:page(' + pages.join('|') + ')/:id?'}
             exact
-            component={getCompomnent(page.main)}
-            pageId={page.id}
+            component={Pages}
           />
-        ))}
-        <Route
-          path={'/:page(' + itemsPages.join('|') + ')/:id'}
-          exact
-          component={Page}
-        />
-      </Switch>
+        </Switch>
+      </Grid>
     </main>
     <footer>
-      <Footer pages={pages} />
+      <Footer />
     </footer>
   </div>
 );
 
-const getCompomnent = name => {
-  switch (name) {
-    case 'counter':
-      return Counter;
-    case 'about':
-      return About;
-    case 'items':
-      return Items;
-    default:
-      return Counter;
-  }
-};
-
 App.propTypes = {
-  pages: PropTypes.array.isRequired,
-  itemsPages: PropTypes.string.isRequired
+  pages: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  pages: state.site.pages,
-  itemsPages: state.site.pages.filter(v => v.main === 'items').map(v => v.id)
+  pages: state.site.pages.map(v => v.id)
 });
 
 export default connect(mapStateToProps)(App);

@@ -2,16 +2,6 @@
   "name": "Geek React",
   "pages": [
     {
-      "id": "",
-      "title": "Counter",
-      "main": "counter"
-    },
-    {
-      "id": "about-us",
-      "title": "Пра нас",
-      "main": "about"
-    },
-    {
       "id": "products",
       "title": "Тавары",
       "main": "items"
