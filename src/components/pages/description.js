@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import fetch from 'cross-fetch';
-import ReactHtmlParser from 'react-html-parser';
+import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import fetch from 'cross-fetch'
+import ReactHtmlParser from 'react-html-parser'
+
+const URL = process.env.PUBLIC_URL || ''
 
 class Description extends Component {
   state = {
@@ -9,19 +11,19 @@ class Description extends Component {
   };
 
   componentDidMount() {
-    const { id } = this.props;
-    fetch('/data/html/' + id)
+    const { id } = this.props
+    fetch(URL + '/data/html/' + id)
       .then(res => {
         if (res.status >= 400) {
-          throw new Error('Bad response from server');
+          throw new Error('Bad response from server')
         }
-        return res.text();
+        return res.text()
       })
       .then(html => {
-        this.setState({ html: html });
+        this.setState({ html: html })
       })
       .catch(() => {
-        this.setState({ html: '404' });
+        this.setState({ html: '404' })
       });
   }
 
@@ -31,7 +33,7 @@ class Description extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         {ReactHtmlParser(this.state.html, {
           transform: (node, index) => {
             let isHyperlink = node.type === 'tag' && node.name === 'a'
@@ -44,7 +46,7 @@ class Description extends Component {
             }
           }
         })}
-      </div>
+      </Fragment>
     );
   }
 }
