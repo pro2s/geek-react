@@ -3,7 +3,7 @@ import * as types from '../constants/appActionTypes'
 
 const RECEIVED = '_RECEIVED'
 const ERROR = '_ERROR'
-const URL = process.env.PUBLIC_URL || '/'
+const URL = process.env.PUBLIC_URL || ''
 
 const getApiGenerator = next => (route, name, initAction = {}) =>
   fetch(route)
@@ -60,10 +60,10 @@ const dataService = () => next => action => {
   // const postApi = postApiGenerator(next)
   switch (action.type) {
     case types.GET_SITE_DATA:
-      return getApi(URL + 'data/site.json', types.GET_SITE_DATA)
+      return getApi(URL + '/data/site.json', types.GET_SITE_DATA)
     case types.GET_PAGE_DATA:
       return getApi(
-        URL + 'data/' + action.pageId + '.json',
+        URL + '/data/' + action.pageId + '.json',
         types.GET_PAGE_DATA,
         action
       );
