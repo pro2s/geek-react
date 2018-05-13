@@ -1,53 +1,43 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux' 
-import { Switch, Route} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+import { Navigation, Footer } from '../../components/navigation';
 import Counter from '../counter';
 import About from '../about';
-import Navigation from '../../components/navigation';
+import Pages from '../pages';
+import { Grid } from 'react-bootstrap/lib';
 
-const App = ({pages}) => (
+const App = ({ pages }) => (
   <div>
     <header>
-      <Navigation pages={pages} />
+      <Navigation />
     </header>
     <main>
-      <Switch>
-        {pages.map((page, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
+      <Grid>
+        <Switch>
+          <Route path={'/about-us'} exact component={About} />
+          <Route path={'/counter'} exact component={Counter} />
           <Route
-            key={index}
-            path={"/" + page.id}
+            path={'/:page(' + pages.join('|') + ')/:id?'}
             exact
-            component={getCompomnent(page.main)}
+            component={Pages}
           />
-        ))}
-      </Switch>
+        </Switch>
+      </Grid>
     </main>
+    <footer>
+      <Footer />
+    </footer>
   </div>
 );
 
-const getCompomnent = (name) => {
-  switch (name) {
-    case "counter":
-      return Counter;
-    case "about":
-      return About;
-    default:
-      return Counter;
-  }
-}
 App.propTypes = {
-  pages: PropTypes.array.isRequired,
-}
+  pages: PropTypes.array.isRequired
+};
 
 const mapStateToProps = state => ({
-  pages: state.site.pages
-})
+  pages: state.site.pages.map(v => v.id)
+});
 
-
-export default connect(
-  mapStateToProps
-)(App) 
-
+export default connect(mapStateToProps)(App);

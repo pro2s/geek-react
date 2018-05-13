@@ -1,21 +1,34 @@
 {
-    "items" : [
-        {
-            "title" : "Размалюй ровар",
-            "preview" : "https://test.geeklauka.by/images/services/s2/painted_bike_cover.jpg",
-            "images" : [
-                "https://test.geeklauka.by/images/services/s2/painted_bike_1.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_2.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_3.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_4.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_5.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_6.jpg",
-                "https://test.geeklauka.by/images/services/s2/painted_bike_7.jpg"
-            ],
-            "description" : "painted_bike.html" 
-        },
-        {
-            "title" : "Свая выява на цішотцы"
-        }
-    ]
+  "title" : "Якія паслугі",
+  "description" : "што мы можам",
+  "items": [
+    {
+      "id": "1",
+      "title": "Размалюй ровар",
+      "price": "5 руб.",
+      "preview":
+        "https://test.geeklauka.by/images/services/s2/painted_bike_cover.jpg",
+      "images": [
+        "https://test.geeklauka.by/images/services/s2/painted_bike_1.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_2.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_3.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_4.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_5.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_6.jpg",
+        "https://test.geeklauka.by/images/services/s2/painted_bike_7.jpg"
+      ],
+      "description": "painted_bike.html"
+    },
+    {
+      "id": "2",
+      "title": "Свая выява на цішотцы",
+      "preview": "https://test.geeklauka.by/images/services/s1/space_invader_cover.jpg",
+      "price" : "-",
+      "images": [
+        "https://test.geeklauka.by/images/services/s1/paint_t_shirts_1_mini.jpg",
+        "https://test.geeklauka.by/images/services/s1/paint_t_shirts_2_mini.jpg"
+      ],
+      "description": "paint_t_shirts.html"
+    }
+  ]
 }
