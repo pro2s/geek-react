@@ -1,40 +1,35 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import fetch from 'cross-fetch'
+import { connect } from 'react-redux'
 import ReactHtmlParser from 'react-html-parser'
-
-const URL = process.env.PUBLIC_URL || ''
+import { getPageDescription } from '../../actions/pages'
 
 class Description extends Component {
-  state = {
-    html: ''
-  };
+  loadData(props) {
+    const { dispatch, id, description } = props;
+    if (id !== description.id) {
+      dispatch(getPageDescription(id))
+    }
+  }
+
+  componentWillUpdate(props) {
+    this.loadData(props);
+  }
 
   componentDidMount() {
-    const { id } = this.props
-    fetch(URL + '/data/html/' + id)
-      .then(res => {
-        if (res.status >= 400) {
-          throw new Error('Bad response from server')
-        }
-        return res.text()
-      })
-      .then(html => {
-        this.setState({ html: html })
-      })
-      .catch(() => {
-        this.setState({ html: '404' })
-      });
+    this.loadData(this.props);
   }
 
   static propTypes = {
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    description: PropTypes.object.isRequired,
   };
 
   render() {
+    const { description } = this.props
     return (
       <Fragment>
-        {ReactHtmlParser(this.state.html, {
+        {ReactHtmlParser(description.html, {
           transform: (node, index) => {
             let isHyperlink = node.type === 'tag' && node.name === 'a'
             if (isHyperlink) {
@@ -50,5 +45,8 @@ class Description extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  description: state.description
+});
 
-export default Description;
+export default connect(mapStateToProps)(Description);

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Navbar, Nav } from 'react-bootstrap/lib';
-import ItemsLinks from './itemsLinks';
-import DefaultLinks from './default';
+import React, { Component } from 'react'
+import { Navbar, Nav } from 'react-bootstrap/lib'
+import PagesLinks from './pagesLinks'
+import DefaultLinks from './defaultLinks'
 
 export default class Navigation extends Component {
   render() {
@@ -11,11 +11,14 @@ export default class Navigation extends Component {
           <Navbar.Brand>
             <a href="#/">Гік-лаўка</a>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
-        <Nav pullRight>
-          <DefaultLinks />
-          <ItemsLinks />
-        </Nav>
+        <Navbar.Collapse>
+          <Nav pullRight>
+            <DefaultLinks />
+            <PagesLinks />
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     );
   }

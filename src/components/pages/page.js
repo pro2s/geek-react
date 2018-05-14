@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getPageItems } from '../../actions/itemsAction';
-import { Row, Col, Button } from 'react-bootstrap/lib';
-import Description from './description';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { getPageItems } from '../../actions/pages'
+import { Row, Col, Button } from 'react-bootstrap/lib'
+import Description from './description'
 
 class Page extends Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class Page extends Component {
   };
 
   loadData(props) {
-    const { dispatch, site, page } = props;
+    const { dispatch, site, page } = props
     if (site.pagesInfo[page] === undefined) {
       dispatch(getPageItems(page));
     }

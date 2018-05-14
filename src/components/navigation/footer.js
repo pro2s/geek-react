@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Navbar, Grid, Row, Col, Nav } from 'react-bootstrap/lib';
-import ItemsLinks from './itemsLinks';
-import DefaultLinks from './default';
+import React, { Component } from 'react'
+import { Navbar, Grid, Row, Col, Nav } from 'react-bootstrap/lib'
+import PagesLinks from './pagesLinks'
+import DefaultLinks from './defaultLinks'
 const NavBarStyle = {
   background: 'none'
 }
@@ -25,7 +25,7 @@ export default class Footer extends Component {
           <Col md={8} className="navbar-default" style={NavBarStyle}>
             <Nav className="navbar-nav" pullRight>
               <DefaultLinks />
-              <ItemsLinks />
+              <PagesLinks />
             </Nav>
           </Col>
         </Row>
