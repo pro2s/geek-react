@@ -21,7 +21,7 @@ class PagesLinks extends Component {
 }
 
 const mapStateToProps = state => ({
-  pages: state.site.pages
+  pages: state.site.sections
 });
 
 export default withRouter(connect(mapStateToProps)(PagesLinks));

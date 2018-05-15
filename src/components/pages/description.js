@@ -1,14 +1,14 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import ReactHtmlParser from 'react-html-parser'
-import { getPageDescription } from '../../actions/pages'
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import ReactHtmlParser from 'react-html-parser';
+import { getPageDescription } from '../../actions/pages';
 
 class Description extends Component {
   loadData(props) {
     const { dispatch, id, description } = props;
     if (id !== description.id) {
-      dispatch(getPageDescription(id))
+      dispatch(getPageDescription(id));
     }
   }
 
@@ -22,22 +22,22 @@ class Description extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
-    description: PropTypes.object.isRequired,
+    description: PropTypes.object.isRequired
   };
 
   render() {
-    const { description } = this.props
+    const { description } = this.props;
     return (
       <Fragment>
         {ReactHtmlParser(description.html, {
           transform: (node, index) => {
-            let isHyperlink = node.type === 'tag' && node.name === 'a'
+            let isHyperlink = node.type === 'tag' && node.name === 'a';
             if (isHyperlink) {
               let text = node.children
                 .map(v => v.data)
                 .map(v => v)
-                .join()
-              return (<span key={index}>{text}</span>)
+                .join();
+              return <span key={index}>{text}</span>;
             }
           }
         })}

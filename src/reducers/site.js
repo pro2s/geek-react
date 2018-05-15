@@ -1,47 +1,39 @@
-import * as types from '../actions/types'
+import * as types from '../actions/types';
 
-export const selectedPage = (state = '', action) => {
-  switch (action.type) {
-    case types.SELECT_PAGE:
-      return action.pageId
-    default:
-      return state
-  }
-}
-
-export const description = (state = {id: '', html: ''}, action) => {
+export const description = (state = { id: '', html: '' }, action) => {
   switch (action.type) {
     case types.GET_PAGE_DESCRIPTION_RECEIVED:
       return {
-         id: action.id,
-         html: action.data
-      }
+        id: action.id,
+        html: action.data
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
+export const sections = (state = {}, action) => {
+  switch (action.type) {
+    case types.GET_SECTION_DATA_RECEIVED:
+      return {
+        ...state,
+        [action.section]: action.data
+      };
+    default:
+      return state;
+  }
+};
 
-const site = {
-   name: '',
-   pages: [],
-   pagesInfo: {} 
-}
-export default (state = site, action) => {
+export default (state = { name: '', sections: [] }, action) => {
   switch (action.type) {
     case types.GET_SITE_DATA_RECEIVED:
-      const { name, pages } = action.data
+      const { name, sections } = action.data;
       return {
         ...state,
         name,
-        pages
-      }
-    case types.GET_PAGE_DATA_RECEIVED:
-      state.pagesInfo[action.pageId] = action.data
-      return {
-        ...state
-      }
+        sections
+      };
     default:
-      return state
+      return state;
   }
-}
+};

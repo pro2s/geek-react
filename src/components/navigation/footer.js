@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Navbar, Grid, Row, Col, Nav } from 'react-bootstrap/lib'
-import PagesLinks from './pagesLinks'
-import DefaultLinks from './defaultLinks'
+import React, { Component } from 'react';
+import { Navbar, Grid, Row, Col, Nav } from 'react-bootstrap/lib';
+import PagesLinks from './pagesLinks';
+import DefaultLinks from './defaultLinks';
 const NavBarStyle = {
   background: 'none'
-}
+};
 export default class Footer extends Component {
   render() {
     return (
@@ -13,7 +13,7 @@ export default class Footer extends Component {
         <Row>
           <Col md={4}>
             <Navbar.Text>
-              Гік-лаўка 2017 -
+              Гік-лаўка 2017&nbsp;-&nbsp;
               <Navbar.Link
                 rel="noopener noreferrer"
                 target="_blank"
