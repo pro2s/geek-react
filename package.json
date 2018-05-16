@@ -13,6 +13,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-html-parser": "^2.0.2",
+    "react-in-viewport": "0.0.28",
     "react-mailchimp-subscribe": "^2.0.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -34,6 +35,9 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

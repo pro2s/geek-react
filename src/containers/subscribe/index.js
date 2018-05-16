@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import SubscribeForm from '../../components/subscribeForm';
 import { Element } from 'react-scroll';
-import Waypoint from 'react-waypoint';
 import { setSubscribe } from '../../actions/pages';
-import { withRouter } from 'react-router-dom';
+import handleViewport from 'react-in-viewport'
 
-const url = '//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn';
+const url = '//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn'
+const ViewportBlock = handleViewport(SubscribeForm)
 
 // use the render prop and your custom form
 const Subscribe = props => (
@@ -17,12 +17,10 @@ const Subscribe = props => (
     url={url}
     render={({ subscribe, status, message }) => (
       <Element id="subscribe">
-        <Waypoint
-          onPositionChange={({ currentPosition }) =>
-            props.setSubscribe(currentPosition === Waypoint.inside)
-          }
-        />
-        <SubscribeForm onSubmitted={formData => subscribe(formData)} />
+        <ViewportBlock 
+          onSubmitted={formData => subscribe(formData)} 
+          onEnterViewport={() => props.setSubscribe(true)}
+          onLeaveViewport={() => props.setSubscribe(false)} />
         {status === 'sending' && (
           <div style={{ color: 'blue' }}>sending...</div>
         )}
@@ -52,4 +50,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default withRouter(connect(null, mapDispatchToProps)(Subscribe));
+export default connect(null, mapDispatchToProps)(Subscribe);
