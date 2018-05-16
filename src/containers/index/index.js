@@ -4,7 +4,6 @@ const Index = () => (
   <div>
     Banner<br />
     [top N pages from sections]<br />
-    Contact<br />
   </div>
 );
 
