@@ -7,6 +7,8 @@ import SubscribeForm from '../../components/subscribeForm';
 import { Element } from 'react-scroll';
 import Waypoint from 'react-waypoint';
 import { setSubscribe } from '../../actions/pages';
+import { withRouter } from 'react-router-dom';
+
 const url = '//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn';
 
 // use the render prop and your custom form
@@ -50,4 +52,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(Subscribe);
+export default withRouter(connect(null, mapDispatchToProps)(Subscribe));
