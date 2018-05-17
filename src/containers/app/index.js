@@ -9,6 +9,7 @@ import Pages from '../pages';
 import Index from '../index';
 import { Grid } from 'react-bootstrap/lib';
 import Subscribe from '../subscribe';
+import './app.css';
 
 const App = ({ sections }) => (
   <div>
@@ -21,11 +22,7 @@ const App = ({ sections }) => (
           <Route path="/" exact component={Index} />
           <Route path="/about-us" exact component={About} />
           <Route path="/counter" exact component={Counter} />
-          <Route
-            path={'/:section(' + sections.join('|') + ')/:id?'}
-            exact
-            component={Pages}
-          />
+          <Route path={'/:section(' + sections.join('|') + ')/:id?'} exact component={Pages} />
         </Switch>
         <Subscribe />
       </Grid>

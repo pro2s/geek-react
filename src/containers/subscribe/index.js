@@ -6,10 +6,10 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import SubscribeForm from '../../components/subscribeForm';
 import { Element } from 'react-scroll';
 import { setSubscribe } from '../../actions/pages';
-import handleViewport from 'react-in-viewport'
+import handleViewport from 'react-in-viewport';
 
-const url = '//xxxx.us13.list-manage.com/subscribe/post?u=zefzefzef&id=fnfgn'
-const ViewportBlock = handleViewport(SubscribeForm)
+const url = '//pro2s.us18.list-manage.com/subscribe/post?u=088f80678ba7462554439a9c8&amp;id=c0254eef84';
+const ViewportBlock = handleViewport(SubscribeForm);
 
 // use the render prop and your custom form
 const Subscribe = props => (
@@ -17,22 +17,13 @@ const Subscribe = props => (
     url={url}
     render={({ subscribe, status, message }) => (
       <Element id="subscribe">
-        <ViewportBlock 
-          onSubmitted={formData => subscribe(formData)} 
+        <ViewportBlock
+          onSubmitted={formData => subscribe(formData)}
           onEnterViewport={() => props.setSubscribe(true)}
-          onLeaveViewport={() => props.setSubscribe(false)} />
-        {status === 'sending' && (
-          <div style={{ color: 'blue' }}>sending...</div>
-        )}
-        {status === 'error' && (
-          <div
-            style={{ color: 'red' }}
-            dangerouslySetInnerHTML={{ __html: message }}
-          />
-        )}
-        {status === 'success' && (
-          <div style={{ color: 'green' }}>Subscribed !</div>
-        )}
+          onLeaveViewport={() => props.setSubscribe(false)}
+          status={status}
+          message={message}
+        />
       </Element>
     )}
   />

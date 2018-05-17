@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Col,
-  Well,
-  Form,
-  FormGroup,
-  FormControl,
-  Button
-} from 'react-bootstrap/lib';
+import { Col, Well, Form, FormGroup, FormControl, Button, Alert } from 'react-bootstrap/lib';
+import ReactHtmlParser from 'react-html-parser';
 
 export default class SubscribeForm extends Component {
   constructor(props, context) {
@@ -24,7 +18,9 @@ export default class SubscribeForm extends Component {
   }
 
   static propTypes = {
-    onSubmitted: PropTypes.func
+    onSubmitted: PropTypes.func,
+    status: PropTypes.string,
+    message: PropTypes.string
   };
 
   submit() {
@@ -43,15 +39,15 @@ export default class SubscribeForm extends Component {
   };
 
   render() {
+    const { status, message } = this.props;
     return (
       <Col md={12}>
         <Well>
           <p>
-            Падпішыцеся! Мы будзем трымаць вас у курсе пра абнаўленні
-            асартымента, зніжкі, акцыі і наогул жыццё нашай суполкі. Рассылка
+            Падпішыцеся! Мы будзем трымаць вас у курсе пра абнаўленні асартымента, зніжкі, акцыі і наогул жыццё нашай суполкі. Рассылка
             адбываецца не часцей чым раз на месяц.
           </p>
-          <Form inline className="text-center">
+          <Form inline className="text-center" style={{ marginBottom: '20px' }}>
             <FormGroup controlId="formInlineEmail">
               <FormControl
                 name="email"
@@ -62,25 +58,16 @@ export default class SubscribeForm extends Component {
               />
             </FormGroup>{' '}
             <FormGroup controlId="formInlineName">
-              <FormControl
-                name="name"
-                type="text"
-                placeholder="Jane"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
+              <FormControl name="name" type="text" placeholder="Jane" value={this.state.name} onChange={this.handleChange} />
             </FormGroup>{' '}
             <FormGroup controlId="formInlineLastName">
-              <FormControl
-                name="lastname"
-                type="text"
-                placeholder="Doe"
-                value={this.state.lastname}
-                onChange={this.handleChange}
-              />
+              <FormControl name="lastname" type="text" placeholder="Doe" value={this.state.lastname} onChange={this.handleChange} />
             </FormGroup>{' '}
             <Button onClick={this.submit}>Send</Button>
           </Form>
+          {status === 'sending' && <Alert bsStyle="info"> Sending... </Alert>}
+          {status === 'error' && <Alert bsStyle="danger">{ReactHtmlParser(message)}</Alert>}
+          {status === 'success' && <Alert bsStyle="success"> Subscribed ! </Alert>}
         </Well>
       </Col>
     );

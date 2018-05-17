@@ -3,6 +3,7 @@ import { Navbar, Nav } from 'react-bootstrap/lib';
 import PagesLinks from './pagesLinks';
 import DefaultLinks from './defaultLinks';
 import SubscribeLink from './subscribe';
+import SocialLinks from './socialLinks';
 
 export default class Navigation extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class Navigation extends Component {
             <DefaultLinks />
             <PagesLinks />
             <SubscribeLink />
+            <SocialLinks />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
