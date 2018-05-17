@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Navbar, Grid, Row, Col, Nav } from 'react-bootstrap/lib';
-import ItemsLinks from './itemsLinks';
-import DefaultLinks from './default';
+import DefaultLinks from './defaultLinks';
+import SocialLinks from './socialLinks';
+
 const NavBarStyle = {
   background: 'none'
-}
+};
+
 export default class Footer extends Component {
   render() {
     return (
@@ -13,11 +15,8 @@ export default class Footer extends Component {
         <Row>
           <Col md={4}>
             <Navbar.Text>
-              Гік-лаўка 2017 -
-              <Navbar.Link
-                rel="noopener noreferrer"
-                target="_blank"
-                href="//creativecommons.org/licenses/by-sa/4.0/">
+              Гік-лаўка 2017&nbsp;-&nbsp;
+              <Navbar.Link rel="noopener noreferrer" target="_blank" href="//creativecommons.org/licenses/by-sa/4.0/">
                 CC BY SA 4.0
               </Navbar.Link>
             </Navbar.Text>
@@ -25,7 +24,11 @@ export default class Footer extends Component {
           <Col md={8} className="navbar-default" style={NavBarStyle}>
             <Nav className="navbar-nav" pullRight>
               <DefaultLinks />
-              <ItemsLinks />
+            </Nav>
+          </Col>
+          <Col md={12}>
+            <Nav className="navbar-nav" pullRight>
+              <SocialLinks />
             </Nav>
           </Col>
         </Row>

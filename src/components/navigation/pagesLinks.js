@@ -5,7 +5,7 @@ import { NavItem } from 'react-bootstrap/lib';
 import { LinkContainer } from 'react-router-bootstrap';
 import { withRouter } from 'react-router-dom';
 
-class ItemsLinks extends Component {
+class PagesLinks extends Component {
   static propTypes = {
     pages: PropTypes.array.isRequired
   };
@@ -21,7 +21,7 @@ class ItemsLinks extends Component {
 }
 
 const mapStateToProps = state => ({
-  pages: state.site.pages
+  pages: state.site.sections
 });
 
-export default withRouter(connect(mapStateToProps)(ItemsLinks));
+export default withRouter(connect(mapStateToProps)(PagesLinks));

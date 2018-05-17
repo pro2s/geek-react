@@ -1,77 +1,52 @@
-import fetch from 'cross-fetch'
-import * as types from '../constants/appActionTypes'
+import fetch from 'cross-fetch';
+import * as types from '../actions/types';
 
-const RECEIVED = '_RECEIVED'
-const ERROR = '_ERROR'
-const URL = process.env.PUBLIC_URL || ''
+const RECEIVED = '_RECEIVED';
+const ERROR = '_ERROR';
+const URL = process.env.PUBLIC_URL || '';
 
-const getApiGenerator = next => (route, name, initAction = {}) =>
+const getApiGenerator = next => (route, action, result = 'json') =>
   fetch(route)
     .then(res => {
       if (res.status >= 400) {
-        throw new Error('Bad response from server')
+        throw new Error('Bad response from server');
       }
-      return res.json();
+      switch (result) {
+        case 'text':
+          return res.text();
+        default:
+          return res.json();
+      }
     })
     .then(data => {
       return next({
-        type: getReceivedAction(name),
-        data,
-        initAction
+        ...action,
+        type: getReceivedAction(action.type),
+        data
       });
     })
-    .catch(err => {
+    .catch(error => {
       return next({
-        type: getErrorAction(name),
-        err,
-        initAction
+        ...action,
+        type: getErrorAction(action.type),
+        error
       });
     });
-/*
-const postApiGenerator = next => (route, data, name) => fetch(route, {
-		method: "POST",
-		body: JSON.stringify(data),
-		headers: {
-		"Content-Type": "application/json"
-		},
-	})
-	.then(res => {
-		if (res.status >= 400) {
-			throw new Error("Bad response from server");
-		}
-		return res.json();
-	})
-	.then((postData) => {
-		return next({
-			type: getReceivedAction(name),
-			...postData
-		})
-	})
-	.catch(err => {
-		return next({
-			type: getErrorAction(name),
-			err
-		})
-	})
-*/
+
 const dataService = () => next => action => {
   next(action);
   const getApi = getApiGenerator(next);
-  // const postApi = postApiGenerator(next)
   switch (action.type) {
+    case types.GET_PAGE_DESCRIPTION:
+      return getApi(URL + '/data/html/' + action.id, action, 'text');
     case types.GET_SITE_DATA:
-      return getApi(URL + '/data/site.json', types.GET_SITE_DATA)
-    case types.GET_PAGE_DATA:
-      return getApi(
-        URL + '/data/' + action.pageId + '.json',
-        types.GET_PAGE_DATA,
-        action
-      );
+      return getApi(URL + '/data/site.json', action);
+    case types.GET_SECTION_DATA:
+      return getApi(URL + '/data/' + action.section + '.json', action);
     default:
-      break
   }
 };
 
-export const getErrorAction = name => `${name}${ERROR}`
-export const getReceivedAction = name => `${name}${RECEIVED}`
-export default dataService
+export const getErrorAction = name => `${name}${ERROR}`;
+export const getReceivedAction = name => `${name}${RECEIVED}`;
+export default dataService;

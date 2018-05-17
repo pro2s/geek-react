@@ -6,9 +6,12 @@ import { Navigation, Footer } from '../../components/navigation';
 import Counter from '../counter';
 import About from '../about';
 import Pages from '../pages';
+import Index from '../index';
 import { Grid } from 'react-bootstrap/lib';
+import Subscribe from '../subscribe';
+import './app.css';
 
-const App = ({ pages }) => (
+const App = ({ sections }) => (
   <div>
     <header>
       <Navigation />
@@ -16,14 +19,12 @@ const App = ({ pages }) => (
     <main>
       <Grid>
         <Switch>
-          <Route path={'/about-us'} exact component={About} />
-          <Route path={'/counter'} exact component={Counter} />
-          <Route
-            path={'/:page(' + pages.join('|') + ')/:id?'}
-            exact
-            component={Pages}
-          />
+          <Route path="/" exact component={Index} />
+          <Route path="/about-us" exact component={About} />
+          <Route path="/counter" exact component={Counter} />
+          <Route path={'/:section(' + sections.join('|') + ')/:id?'} exact component={Pages} />
         </Switch>
+        <Subscribe />
       </Grid>
     </main>
     <footer>
@@ -33,11 +34,11 @@ const App = ({ pages }) => (
 );
 
 App.propTypes = {
-  pages: PropTypes.array.isRequired
+  sections: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  pages: state.site.pages.map(v => v.id)
+  sections: state.site.sections.map(v => v.id)
 });
 
 export default connect(mapStateToProps)(App);

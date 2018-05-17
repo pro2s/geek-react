@@ -1,32 +1,46 @@
-import * as types from '../constants/appActionTypes';
+import * as types from '../actions/types';
 
-export const selectedPage = (state = '', action) => {
+export const description = (state = { id: '', html: '' }, action) => {
   switch (action.type) {
-    case types.SELECT_PAGE:
-      return action.pageId
+    case types.GET_PAGE_DESCRIPTION_RECEIVED:
+      return {
+        id: action.id,
+        html: action.data
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-const siteInitialState = {
-   name: '',
-   pages: [],
-   pagesInfo: {} 
-}
-export default (state = siteInitialState, action) => {
+export const sections = (state = {}, action) => {
+  switch (action.type) {
+    case types.GET_SECTION_DATA_RECEIVED:
+      return {
+        ...state,
+        [action.section]: action.data
+      };
+    default:
+      return state;
+  }
+};
+
+export const subscribe = (state = { active: false }, action) => {
+  switch (action.type) {
+    case types.SET_SUBSCRIBE:
+      return { active: action.active };
+    default:
+      return state;
+  }
+};
+
+export default (state = { name: '', sections: [] }, action) => {
   switch (action.type) {
     case types.GET_SITE_DATA_RECEIVED:
-      const { name, pages } = action.data;
+      const { name, sections } = action.data;
       return {
         ...state,
         name,
-        pages
-      };
-    case types.GET_PAGE_DATA_RECEIVED:
-      state.pagesInfo[action.initAction.pageId] = action.data;
-      return {
-        ...state
+        sections
       };
     default:
       return state;
