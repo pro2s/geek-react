@@ -7,14 +7,15 @@ import { withRouter } from 'react-router-dom';
 
 class PagesLinks extends Component {
   static propTypes = {
-    pages: PropTypes.array.isRequired
+    pages: PropTypes.array.isRequired,
+    onNavItemClick: PropTypes.func
   };
 
   render() {
-    const { pages = [] } = this.props;
+    const { pages, onNavItemClick } = this.props;
     return pages.map(page => (
       <LinkContainer to={'/' + page.id} key={page.id}>
-        <NavItem>{page.title}</NavItem>
+        <NavItem onSelect={onNavItemClick}>{page.title}</NavItem>
       </LinkContainer>
     ));
   }
