@@ -35,8 +35,13 @@ export const subscribe = (state = { active: false }, action) => {
 
 export default (state = { name: '', sections: [] }, action) => {
   switch (action.type) {
+    case types.GET_SECTIONS_RECEIVED:
+      return {
+        ...state,
+        sections: action.data
+      };
     case types.GET_SITE_DATA_RECEIVED:
-      const { name, sections } = action.data;
+      let { name, sections } = action.data;
       return {
         ...state,
         name,

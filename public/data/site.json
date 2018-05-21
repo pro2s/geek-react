@@ -1,19 +1,4 @@
 {
   "name": "Geek React",
-  "sections": [
-    {
-      "id": "products",
-      "title": "Тавары",
-      "main": "items"
-    },
-    {
-      "id": "services",
-      "title": "Паслугі",
-      "main": "items"
-    },
-    {
-      "id": "workshops",
-      "title": "Майстар-класы"
-    }
-  ]
+  "sections": []
 }

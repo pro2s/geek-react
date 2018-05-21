@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "cross-fetch": "^2.1.1",
+    "mongodb-stitch": "^3.1.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",

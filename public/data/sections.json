@@ -1,0 +1,14 @@
+[
+  {
+    "id": "products",
+    "title": "Тавары"
+  },
+  {
+    "id": "services",
+    "title": "Паслугі"
+  },
+  {
+    "id": "workshops",
+    "title": "Майстар-класы"
+  }
+]
