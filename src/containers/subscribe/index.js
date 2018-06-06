@@ -18,7 +18,14 @@ const Subscribe = props => (
     url={url}
     render={({ subscribe, status, message }) => (
       <Element id="subscribe">
-        <ContactForm onSubmit={subscribe} />
+        <ContactForm
+          onSubmit={values => {
+            subscribe({
+              EMAIL: values.email,
+              NAME: values.name + ' ' + values.lastname
+            });
+          }}
+        />
         <ViewportBlock
           onSubmitted={formData => subscribe(formData)}
           onEnterViewport={() => props.setSubscribe(true)}

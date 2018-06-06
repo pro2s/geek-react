@@ -30,7 +30,7 @@ export default class SubscribeForm extends Component {
       this.state.email.indexOf('@') > -1 &&
       this.onSubmitted({
         EMAIL: this.state.email,
-        NAME: this.state.name + this.state.lastname
+        NAME: this.state.name + ' ' + this.state.lastname
       });
   }
 
