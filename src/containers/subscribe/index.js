@@ -7,6 +7,7 @@ import SubscribeForm from '../../components/subscribeForm';
 import { Element } from 'react-scroll';
 import { setSubscribe } from '../../actions/pages';
 import handleViewport from 'react-in-viewport';
+import ContactForm from '../../components/subscribeForm/subscribe';
 
 const url = '//pro2s.us18.list-manage.com/subscribe/post?u=088f80678ba7462554439a9c8&amp;id=c0254eef84';
 const ViewportBlock = handleViewport(SubscribeForm);
@@ -17,6 +18,7 @@ const Subscribe = props => (
     url={url}
     render={({ subscribe, status, message }) => (
       <Element id="subscribe">
+        <ContactForm onSubmit={subscribe} />
         <ViewportBlock
           onSubmitted={formData => subscribe(formData)}
           onEnterViewport={() => props.setSubscribe(true)}
