@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "cross-fetch": "^2.1.1",
+    "final-form": "^4.8.1",
     "mongodb-stitch": "^3.1.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
+    "react-final-form": "^3.6.0",
     "react-fontawesome": "^1.6.1",
     "react-html-parser": "^2.0.2",
     "react-in-viewport": "0.0.28",

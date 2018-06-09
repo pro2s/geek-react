@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import SubscribeForm from '../../components/subscribeForm';
+import FinalSubscribeForm from '../../components/subscribeForm/form';
 import { Element } from 'react-scroll';
 import { setSubscribe } from '../../actions/pages';
 import handleViewport from 'react-in-viewport';
@@ -17,6 +18,7 @@ const Subscribe = props => (
     url={url}
     render={({ subscribe, status, message }) => (
       <Element id="subscribe">
+        <FinalSubscribeForm onSubmit={subscribe} />
         <ViewportBlock
           onSubmitted={formData => subscribe(formData)}
           onEnterViewport={() => props.setSubscribe(true)}
