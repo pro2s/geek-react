@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'react-final-form';
+import { Form as FinalForm, Field } from 'react-final-form';
+import { Col, Well, Form, Button } from 'react-bootstrap/lib';
+import FieldGroup from './fieldGroup';
 
-const doSubmit = (values, onSubmit) => {
+const formStyle = { marginBottom: '20px' };
+const preSubmit = onSubmit => values => {
   onSubmit({
     EMAIL: values.email,
     NAME: [values.name, values.lastName].join(' ')
@@ -10,29 +13,27 @@ const doSubmit = (values, onSubmit) => {
 };
 
 const FinalSubscribeForm = ({ onSubmit }) => (
-  <Form
-    onSubmit={values => doSubmit(values, onSubmit)}
-    render={({ handleSubmit, pristine, invalid }) => (
-      <form onSubmit={handleSubmit}>
-        <h2>Subscribe</h2>
-        <div>
-          <label>Email</label>
-          <Field name="email" component="input" placeholder="email" />
-        </div>
-        <div>
-          <label>First Name</label>
-          <Field name="name" component="input" placeholder="First Name" />
-        </div>
-        <div>
-          <label>Last Name</label>
-          <Field name="lastName" component="input" placeholder="Last Name" />
-        </div>
-        <button type="submit" disabled={pristine || invalid}>
-          Submit
-        </button>
-      </form>
-    )}
-  />
+  <Col md={12}>
+    <Well>
+      <p>
+        Падпішыцеся! Мы будзем трымаць вас у курсе пра абнаўленні асартымента, зніжкі, акцыі і наогул жыццё нашай суполкі. Рассылка
+        адбываецца не часцей чым раз на месяц.
+      </p>
+      <FinalForm
+        onSubmit={preSubmit(onSubmit)}
+        render={({ handleSubmit, pristine, invalid }) => (
+          <Form inline className="text-center" style={formStyle} onSubmit={handleSubmit}>
+            <Field id="email" component={FieldGroup} name="email" type="email" placeholder="jane.doe@example.com" />
+            <Field id="name" component={FieldGroup} name="name" type="text" placeholder="Jane" />
+            <Field id="lastname" component={FieldGroup} name="lastname" type="text" placeholder="Doe" />
+            <Button onClick={handleSubmit} disabled={pristine || invalid}>
+              Send
+            </Button>
+          </Form>
+        )}
+      />
+    </Well>
+  </Col>
 );
 
 FinalSubscribeForm.propTypes = {

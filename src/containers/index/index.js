@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { Col } from 'react-bootstrap/lib';
 const Index = () => (
-  <div>
+  <Col md={12}>
     Banner<br />
     [top N pages from sections]<br />
-  </div>
+  </Col>
 );
 
 export default Index;

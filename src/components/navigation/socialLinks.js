@@ -6,13 +6,13 @@ import PropTypes from 'prop-types';
 const SocialLinks = ({ onNavItemClick }) => (
   <React.Fragment>
     <NavItem onSelect={onNavItemClick}>
-      <FontAwesome name="vk" size="lg" />
+      <FontAwesome name="vk" size="sm" />
     </NavItem>
     <NavItem onSelect={onNavItemClick}>
-      <FontAwesome name="facebook" size="lg" />
+      <FontAwesome name="facebook" size="sm" />
     </NavItem>
     <NavItem onSelect={onNavItemClick}>
-      <FontAwesome name="instagram" size="lg" />
+      <FontAwesome name="instagram" size="sm" />
     </NavItem>
   </React.Fragment>
 );
